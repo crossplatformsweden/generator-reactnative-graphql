@@ -23,9 +23,21 @@ export class ReactGenerator extends Generator {
         {
           name: 'ReactNative Component with Query',
           value: 'comp-query'
+        },
+        {
+          name: 'ReactNative Component with Mutation',
+          value: 'comp-mutation'
+        },
+        {
+          name: 'ReactNative Component with Query And Mutation',
+          value: 'comp-querymutation'
+        },
+        {
+          name: 'ReactNative Component Pure',
+          value: 'comp-pure'
         }
       ]
     };
-    const res = this.prompt({});
+    const res = this.prompt(prompts);
   }
 }
