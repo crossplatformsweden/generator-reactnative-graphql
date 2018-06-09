@@ -2,15 +2,14 @@
   "name": "generator-reactnative-graphql",
   "version": "0.0.0",
   "description": "React Native GQL Component Generator",
-  "homepage": "https://github.com/crossplatformsweden/react-graphql-scaffolding",
+  "homepage":
+    "https://github.com/crossplatformsweden/react-graphql-scaffolding",
   "author": {
     "name": "Emil Apelgren",
     "email": "emil@crossplatform.se",
     "url": "www.crossplatform.se"
   },
-  "files": [
-    "generators"
-  ],
+  "files": ["generators"],
   "main": "generators/index.js",
   "keywords": [
     "React",
@@ -21,24 +20,26 @@
     "yeoman-generator"
   ],
   "devDependencies": {
-    "yeoman-test": "^1.7.0",
-    "yeoman-assert": "^3.1.0",
-    "nsp": "^2.8.0",
+    "@types/yosay": "0.0.29",
     "eslint": "^4.19.1",
-    "prettier": "^1.11.1",
-    "husky": "^0.14.3",
-    "lint-staged": "^6.1.1",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
     "eslint-config-xo": "^0.20.1",
-    "jest": "^22.0.6"
+    "eslint-plugin-prettier": "^2.6.0",
+    "husky": "^0.14.3",
+    "jest": "^22.0.6",
+    "lint-staged": "^6.1.1",
+    "nsp": "^2.8.0",
+    "prettier": "^1.11.1",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^1.7.0"
   },
   "engines": {
     "npm": ">= 4.0.0"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.1",
+    "@types/yeoman-generator": "^2.0.3",
     "chalk": "^2.1.0",
+    "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
   "jest": {
@@ -51,20 +52,11 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
   },
   "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
+    "extends": ["xo", "prettier"],
     "env": {
       "jest": true,
       "node": true
@@ -78,10 +70,9 @@
         }
       ]
     },
-    "plugins": [
-      "prettier"
-    ]
+    "plugins": ["prettier"]
   },
-  "repository": "https://github.com/crossplatformsweden/react-graphql-scaffolding",
+  "repository":
+    "https://github.com/crossplatformsweden/react-graphql-scaffolding",
   "license": "Apache-2.0"
 }
