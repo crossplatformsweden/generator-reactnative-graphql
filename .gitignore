@@ -1,4 +1,5 @@
 node_modules/
+generators/
 .node_modules/
 built/*
 tests/cases/rwc/*
