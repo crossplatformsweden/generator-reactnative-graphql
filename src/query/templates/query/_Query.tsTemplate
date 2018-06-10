@@ -1,0 +1,15 @@
+import gql from 'graphql-tag';
+
+export const <%= queryName %> = gql`
+  query <%= queryName %>($input: inputType!) {
+    <%= queryNameCamel %>(input: $input) {
+      varA
+      varB
+      varC {
+          varD
+      }
+    }
+  }
+`;
+
+export default <%= queryName %>;

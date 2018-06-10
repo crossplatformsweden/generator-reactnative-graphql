@@ -4,13 +4,9 @@
   "description": "React Native GQL Component Generator",
   "homepage":
     "https://github.com/crossplatformsweden/react-graphql-scaffolding",
-  "author": {
-    "name": "Emil Apelgren",
-    "email": "emil@crossplatform.se",
-    "url": "www.crossplatform.se"
-  },
+  "author": "Emil Apelgren <emil@crossplatform.se> (www.crossplatform.se)",
   "files": ["generators"],
-  "main": "generators/index.js",
+  "main": "./generators/app/index.js",
   "keywords": [
     "React",
     "React Native",
@@ -37,9 +33,18 @@
     "npm": ">= 4.0.0"
   },
   "dependencies": {
+    "@types/glob": "^5.0.35",
+    "@types/lodash": "^4.14.109",
     "@types/yeoman-generator": "^2.0.3",
     "chalk": "^2.1.0",
+    "copy": "^0.3.2",
+    "copyfiles": "^2.0.0",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "lodash": "^4.17.10",
+    "shelljs": "^0.8.2",
     "yeoman-generator": "^2.0.1",
+    "yo": "^2.0.2",
     "yosay": "^2.0.1"
   },
   "jest": {
@@ -72,7 +77,14 @@
     },
     "plugins": ["prettier"]
   },
-  "repository":
-    "https://github.com/crossplatformsweden/react-graphql-scaffolding",
-  "license": "Apache-2.0"
+  "repository": {
+    "type": "git",
+    "url":
+      "git+https://github.com/crossplatformsweden/react-graphql-scaffolding.git"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url":
+      "https://github.com/crossplatformsweden/react-graphql-scaffolding/issues"
+  }
 }

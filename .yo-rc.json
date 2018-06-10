@@ -1,0 +1,7 @@
+{
+  "generator-reactnative-graphql": {
+    "promptValues": {
+      "mobileFeature": "test/features"
+    }
+  }
+}

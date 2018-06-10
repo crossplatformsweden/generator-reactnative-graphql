@@ -1,0 +1,56 @@
+
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { graphql, ChildProps } from 'react-apollo';
+import <%= queryName %> from '../query/<%= queryName %>Query';
+
+// DELETE? Should be generated
+export interface <%= queryName %>Query {
+    <%= queryNameCamel %>: {}
+}
+
+// DELETE? Should be generated
+export interface <%= queryName %>QueryVariables {}
+
+export interface I<%= componentName %>Props {}
+
+export interface I<%= componentName %>LocalState {}
+
+export const <%= componentName %>Pure = ({data}: any) =>
+    (<View>
+        <Text><%= componentName %></Text>
+    </View>);
+
+
+class <%= componentName %> extends React.Component<
+  ChildProps<I<%= componentName %>Props, <%= queryName %>Query, <%= queryName %>QueryVariables>,
+  I<%= componentName %>LocalState
+>  {
+        render() {
+            if (!this.props.data) {
+                return null;
+            }
+
+            const { loading, error,  <%= queryNameCamel %> } = this.props.data;
+
+            if (error) {
+                return <Text>Error</Text>
+            }
+            if (loading) {
+                return <Text>Loading</Text>
+            }
+
+            return (
+                <<%= componentName %>Pure {...<%= queryNameCamel %>} />
+            );
+        }
+    }
+
+  export default graphql<I<%= componentName %>Props, <%= queryName %>Query, <%= queryName %>QueryVariables>(<%= queryName %>,
+  {
+    // options: {
+    //   variables: {
+    //     aa: bbb,
+    //   },
+    // },
+  })(<%= componentName %>);
