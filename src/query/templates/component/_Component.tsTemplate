@@ -1,56 +1,51 @@
-
 import * as React from 'react';
 import { View, Text } from 'react-native';
-import { graphql, ChildProps } from 'react-apollo';
-import <%= queryName %> from '../query/<%= queryName %>Query';
+import { Query } from 'react-apollo';
+import { <%= queryName %> } from '../query/<%= queryName %>Query';
 
-// DELETE? Should be generated
-export interface <%= queryName %>Query {
-    <%= queryNameCamel %>: {}
+class <%= queryName %>Query extends Query<Get<%= queryName %>Query, Get<%= queryName %>QueryVariables> {}
+
+// TODO: DELETE? Should be generated
+export interface Get<%= queryName %>Query {
+  someObjectFromResolver: {
+    propertyA: string;
+  };
 }
 
-// DELETE? Should be generated
-export interface <%= queryName %>QueryVariables {}
+// TODO: DELETE? Should be generated
+export interface Get<%= queryName %>QueryVariables {
+  inputVarA: string;
+}
 
-export interface I<%= componentName %>Props {}
+// This is set from outide ex <<%= componentName %>Component componentPropA='xxx'/>
+interface IProps {
+  componentPropA: string;
+}
 
-export interface I<%= componentName %>LocalState {}
+interface IState {}
 
-export const <%= componentName %>Pure = ({data}: any) =>
-    (<View>
-        <Text><%= componentName %></Text>
-    </View>);
+export const <%= componentName %>ComponentPure = ({ someObjectFromResolver }: Get<%= queryName %>Query) => (
+  <View>
+    <Text>myComponent</Text>
+  </View>
+);
 
+export default class <%= componentName %>Component extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+    this.state = {}; // initial state
+  }
+  render() {
+    return (
+      <<%= queryName %>Query query={<%= queryName %>} variables={{ inputVarA: '2' }}>
+        {({ loading, data, error }) => {
+          if (loading) return <Text>Loading</Text>;
+          if (error) return <Text>Error: {error}</Text>;
+          if (!data) return <Text>No Data</Text>;
 
-class <%= componentName %> extends React.Component<
-  ChildProps<I<%= componentName %>Props, <%= queryName %>Query, <%= queryName %>QueryVariables>,
-  I<%= componentName %>LocalState
->  {
-        render() {
-            if (!this.props.data) {
-                return null;
-            }
-
-            const { loading, error,  <%= queryNameCamel %> } = this.props.data;
-
-            if (error) {
-                return <Text>Error</Text>
-            }
-            if (loading) {
-                return <Text>Loading</Text>
-            }
-
-            return (
-                <<%= componentName %>Pure {...<%= queryNameCamel %>} />
-            );
-        }
-    }
-
-  export default graphql<I<%= componentName %>Props, <%= queryName %>Query, <%= queryName %>QueryVariables>(<%= queryName %>,
-  {
-    // options: {
-    //   variables: {
-    //     aa: bbb,
-    //   },
-    // },
-  })(<%= componentName %>);
+          return <<%= componentName %>ComponentPure someObjectFromResolver={data.someObjectFromResolver} />;
+        }}
+      </<%= queryName %>Query>
+    );
+  }
+}

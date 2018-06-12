@@ -54,7 +54,8 @@
     "prepublishOnly": "nsp check",
     "pretest": "eslint .",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "start": "tsc && gulp"
   },
   "lint-staged": {
     "*.js": ["eslint --fix", "git add"],
