@@ -74,8 +74,8 @@ class QueryGenerator extends Generator {
     this.log(this.props.selectedFeature);
     this.log(this.props.componentName);
 
-    const dir = `${this.props.selectedFeature}/${this.props.componentName}/component/`;
-    const dir2 = `${this.props.selectedFeature}/${this.props.componentName}/query/`;
+    const dir = `${this.props.selectedFeature}/components/`;
+    const dir2 = `${this.props.selectedFeature}/queries/`;
 
     if (!existsSync(dir)) {
       shell.mkdir('-p', dir);
@@ -84,24 +84,24 @@ class QueryGenerator extends Generator {
 
     //COPY COMPONENT
     this.fs.copyTpl(
-      this.templatePath('component/_Component.tsTemplate'),
+      this.templatePath('components/_Component.tsTemplate'),
       this.destinationPath(`${dir}/${this.props.componentName}Component.tsx`),
       data
     );
     this.fs.copyTpl(
-      this.templatePath('component/_Component.test.tsTemplate'),
+      this.templatePath('components/_Component.test.tsTemplate'),
       this.destinationPath(`${dir}/${this.props.componentName}Component.test.tsx`),
       data
     );
 
     // COPY QUERY
     this.fs.copyTpl(
-      this.templatePath('query/_Query.tsTemplate'),
+      this.templatePath('queries/_Query.tsTemplate'),
       this.destinationPath(`${dir2}/${this.props.queryName}Query.ts`),
       data
     );
     this.fs.copyTpl(
-      this.templatePath('query/_Query.test.tsTemplate'),
+      this.templatePath('queries/_Query.test.tsTemplate'),
       this.destinationPath(`${dir2}/${this.props.queryName}Query.test.ts`),
       data
     );

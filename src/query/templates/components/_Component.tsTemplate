@@ -6,14 +6,14 @@ import { <%= queryName %> } from '../query/<%= queryName %>Query';
 class <%= queryName %>Query extends Query<Get<%= queryName %>Query, Get<%= queryName %>QueryVariables> {}
 
 // TODO: DELETE? Should be generated
-export interface Get<%= queryName %>Query {
+interface Get<%= queryName %>Query {
   someObjectFromResolver: {
     propertyA: string;
   };
 }
 
 // TODO: DELETE? Should be generated
-export interface Get<%= queryName %>QueryVariables {
+interface Get<%= queryName %>QueryVariables {
   inputVarA: string;
 }
 
@@ -22,19 +22,13 @@ interface IProps {
   componentPropA: string;
 }
 
-interface IState {}
-
 export const <%= componentName %>ComponentPure = ({ someObjectFromResolver }: Get<%= queryName %>Query) => (
   <View>
     <Text>myComponent</Text>
   </View>
 );
 
-export default class <%= componentName %>Component extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {}; // initial state
-  }
+export default class <%= componentName %>Component extends React.SFC<IProps> {
   render() {
     return (
       <<%= queryName %>Query query={<%= queryName %>} variables={{ inputVarA: '2' }}>
